@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IRA Weapon System - Code Activation</title>
+    <link rel="stylesheet" href="style.css"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <script src="https://cdn.jsdelivr.net/npm/js-confetti@latest/dist/js-confetti.min.js"></script>
+</head>
+<body>
+
+    <canvas id="fireworks-canvas"></canvas>
+
+    <div class="system-interface">
+        
+        <div class="header">
+            <span class="icon-blade header-sword">⚔️</span>
+            <h1>IRA Weapon</h1>
+            <i class="fas fa-globe"></i>
+        </div>
+
+        <div class="display-box" id="message-display">
+            <p>กรอกรหัส 8 ตัวอักษรเพื่อปลดล็อกอาวุธของไอร่า</p>
+        </div>
+
+        <div class="input-container">
+            <input type="text" id="codeInput" maxlength="8" placeholder="PASSWORD" onkeyup="this.value = this.value.toUpperCase()">
+            <button id="checkButton">EXECUTE</button>
+        </div>
+
+        <div class="footer-info">
+            <p class="hint">คำใบ้: 8 ตัวอักษร</p>
+            <i class="fas fa-shield-halved"></i>
+        </div>
+
+        <div class="sword-effect-container" id="sword-effect-container">
+            <span class="single-sword" id="single-sword" role="presentation">⚔️</span>
+        </div>
+        </div>
+    
+    <audio id="fireworks-audio" src="fireworks.mp3" preload="auto"></audio> 
+
+    <script src="script.js"></script>
+</body>
+</html>

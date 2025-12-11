@@ -1,0 +1,281 @@
+/* --- GLOBAL STYLES --- */
+body {
+    background-color: #0d1a26; 
+    color: #00e0ff;
+    font-family: 'Consolas', 'Courier New', monospace;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    /* พื้นหลังดาว/จุดเล็กๆ */
+    background-image: radial-gradient(#1a263a 1px, transparent 1px), radial-gradient(#1a263a 1px, #0d1a26 1px);
+    background-size: 20px 20px;
+    overflow: hidden; 
+}
+
+/* --- FIREWORKS CANVAS --- */
+#fireworks-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 1; 
+    pointer-events: none; 
+}
+
+/* --- INTERFACE CONTAINER (กรอบหลัก) --- */
+.system-interface {
+    background-color: #0b1420; 
+    padding: 30px;
+    border-radius: 15px;
+    text-align: center;
+    width: 90%;
+    max-width: 600px;
+    
+    border: 1px solid #00e0ff; 
+    box-shadow: 
+        0 0 15px rgba(0, 224, 255, 0.7), 
+        0 0 0 10px #0e273d, 
+        0 0 0 12px #00e0ff; 
+        
+    position: relative;
+    overflow: hidden; 
+    z-index: 10; 
+}
+
+/* --- วงจรไฟฟ้า (Circuit Effect) --- */
+.system-interface::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0.1; 
+    background-image: 
+        repeating-linear-gradient(0deg, transparent, transparent 9px, #00e0ff 10px),
+        repeating-linear-gradient(90deg, transparent, transparent 9px, #00e0ff 10px);
+    background-size: 10px 10px;
+}
+
+/* --- HEADER / DISPLAY BOX / INPUTS (สไตล์พื้นฐาน) --- */
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 25px;
+    font-size: 1.5em;
+    color: #fff;
+    text-shadow: 0 0 10px #fff;
+    position: relative; 
+    z-index: 20;
+}
+
+.header h1 {
+    font-size: 1.5em;
+    margin: 0 15px;
+}
+
+.header .icon-blade {
+    font-size: 1.8em;
+    margin: 0 10px;
+    text-shadow: 0 0 10px #00e0ff;
+}
+
+.header .fas {
+    font-size: 1.8em;
+    color: #00e0ff; 
+    text-shadow: 0 0 10px #00e0ff;
+}
+
+.display-box {
+    background-color: #000000;
+    border: 4px solid #00ff41; 
+    padding: 20px;
+    margin-bottom: 25px;
+    height: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.4em;
+    overflow: hidden;
+    box-shadow: inset 0 0 15px rgba(0, 255, 65, 0.7); 
+    position: relative;
+    z-index: 20;
+}
+
+.display-box p {
+    color: #00ff41; 
+    text-shadow: 0 0 8px #00ff41;
+}
+
+.success, .success p {
+    color: #00ff41 !important;
+    text-shadow: 0 0 18px #00ff41 !important;
+}
+
+.error, .error p {
+    color: #ff4d4d !important;
+    text-shadow: 0 0 18px #ff4d4d !important;
+}
+
+.input-container {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+    position: relative;
+    z-index: 20;
+}
+
+#codeInput {
+    flex-grow: 1;
+    padding: 12px;
+    border: 3px solid #00ff41;
+    background-color: #000;
+    color: #00ff41;
+    font-size: 1.5em;
+    text-align: center;
+    text-transform: uppercase;
+    box-shadow: 0 0 10px rgba(0, 255, 65, 0.5); 
+}
+
+#codeInput::placeholder {
+    color: rgba(0, 255, 65, 0.4);
+    font-size: 0.9em;
+    letter-spacing: 2px;
+}
+
+#checkButton {
+    padding: 12px 25px;
+    background-color: #00ff41;
+    color: #0b1420;
+    border: none;
+    font-size: 1.2em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s, box-shadow 0.2s;
+    box-shadow: 0 0 15px #00ff41;
+    border-radius: 5px;
+}
+
+#checkButton:hover {
+    background-color: #33ff66;
+    box-shadow: 0 0 20px #33ff66;
+}
+
+#checkButton:active {
+    transform: translateY(1px);
+}
+
+.footer-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 15px;
+    padding: 0 10px;
+    position: relative;
+    z-index: 20;
+}
+
+.hint {
+    font-size: 0.9em;
+    color: #00e0ff; 
+}
+
+.footer-info .fas {
+    font-size: 1.2em;
+    color: #00e0ff;
+    text-shadow: 0 0 5px #00e0ff;
+}
+
+/* --- VICTORY GLOW EFFECT --- */
+@keyframes victory-glow {
+    0% {
+        box-shadow: 0 0 15px rgba(0, 255, 65, 0.7), 0 0 0 12px #00e0ff;
+        transform: scale(1);
+    }
+    50% {
+        box-shadow: 0 0 40px rgba(255, 255, 100, 1), 0 0 0 15px #ffff00;
+        transform: scale(1.01); 
+    }
+    100% {
+        box-shadow: 0 0 15px rgba(0, 255, 65, 0.7), 0 0 0 12px #00e0ff;
+        transform: scale(1);
+    }
+}
+
+.success-effect {
+    animation: victory-glow 0.3s infinite alternate; 
+}
+
+/* *** 1. โค้ดซ่อนดาบหัวข้อ เมื่อเอฟเฟกต์ทำงาน (แก้ปัญหา 4 ดาบ) *** */
+.sword-effect-container.active ~ .system-interface .header .header-sword {
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+/* --- SWORD EFFECT (ดาบไขว้) --- */
+@keyframes container-shake {
+    0% { transform: translate(-50%, -50%) rotate(0.5deg); }
+    100% { transform: translate(-50%, -50%) rotate(-0.5deg); }
+}
+
+.sword-effect-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    pointer-events: none; 
+    opacity: 0; 
+    transition: opacity 0.3s ease-in; 
+    z-index: 30; 
+    animation: none; 
+}
+
+.sword-effect-container.active {
+    opacity: 1; 
+    transition: opacity 0s; 
+    animation: container-shake 0.1s infinite alternate; /* เอฟเฟกต์สั่น */
+}
+
+.sword-effect-container span {
+    /* 2. ขนาด: 7em */
+    font-size: 7em; 
+    color: #fff;
+    text-shadow: 0 0 15px #00e0ff, 0 0 30px #ffff00; 
+    position: absolute;
+    animation-duration: 1.2s; 
+    animation-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+    animation-fill-mode: forwards; 
+}
+
+/* แอนิเมชันดาบซ้าย */
+.sword-effect-container .left-sword {
+    transform: translateX(-150%) translateY(-50%) rotate(0deg); 
+    animation-name: sword-left-animation;
+}
+
+@keyframes sword-left-animation {
+    0% { transform: translateX(-150%) translateY(-50%) rotate(0deg); opacity: 0; }
+    /* 3. ตำแหน่งสุดท้าย: ปรับตำแหน่งให้เข้ามามากขึ้น (6%) และมุมที่ชันขึ้น (60 องศา) */
+    100% { transform: translateX(-6%) translateY(-50%) rotate(-60deg); opacity: 1; }
+}
+
+/* แอนิเมชันดาบขวา */
+@keyframes sword-right-animation {
+    0% { transform: translateX(150%) translateY(-50%) rotate(0deg); opacity: 0; }
+    /* 4. ตำแหน่งสุดท้าย: ปรับตำแหน่งให้เข้ามามากขึ้น (6%) และมุมที่ชันขึ้น (60 องศา) */
+    100% { transform: translateX(6%) translateY(-50%) rotate(60deg); opacity: 1; }
+}
+
+.sword-effect-container .right-sword {
+    transform: translateX(150%) translateY(-50%) rotate(0deg); 
+    animation-name: sword-right-animation;
+}
