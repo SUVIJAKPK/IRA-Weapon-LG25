@@ -1,47 +1,59 @@
 <!DOCTYPE html>
 <html lang="th">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IRA Weapon System - Code Activation</title>
-    <link rel="stylesheet" href="style.css"> 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    
-    <script src="https://cdn.jsdelivr.net/npm/js-confetti@latest/dist/js-confetti.min.js"></script>
+  <meta charset="UTF-8" />
+  <title>I.R.A. WEAPON SYSTEM - TEAMWORK Unlock</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
+  <div class="ground-fog"></div>
 
-    <canvas id="fireworks-canvas"></canvas>
+  <!-- เอฟเฟกต์ดาบ -->
+  <div class="fx-sword" id="fxSword"></div>
 
-    <div class="system-interface">
-        
-        <div class="header">
-            <span class="icon-blade header-sword">⚔️</span>
-            <h1>IRA Weapon</h1>
-            <i class="fas fa-globe"></i>
+  <!-- เสียงตอนปลดล็อก (ให้มีไฟล์ slash.mp3 อยู่โฟลเดอร์เดียวกัน) -->
+  <audio id="sfxSlash" src="slash.mp3" preload="auto"></audio>
+  <!-- เสียงตอนตอบผิด -->
+  <audio id="sfxError" src="error.mp3" preload="auto"></audio>
+
+  <div class="scene">
+    <div class="title">I.R.A. WEAPON CONTROL SYSTEM</div>
+    <div class="subtitle">
+      Input the 8-letter password to unlock the <span>I.R.A. WEAPON</span>
+    </div>
+
+    <div class="arcade-wrapper">
+      <div class="arcade">
+        <div class="arcade-header">
+          LARNGEAR 25th
         </div>
 
-        <div class="display-box" id="message-display">
-            <p>กรอกรหัส 8 ตัวอักษรเพื่อปลดล็อกอาวุธของไอร่า</p>
+        <div class="screen" id="screenText">
+          AUTHORIZATION REQUIRED<br>
+          ENTER <span class="highlight">8-LETTER PASSWORD</span><br>
+          TO UNLOCK I.R.A. WEAPON
         </div>
 
-        <div class="input-container">
-            <input type="text" id="codeInput" maxlength="8" placeholder="PASSWORD" onkeyup="this.value = this.value.toUpperCase()">
-            <button id="checkButton">EXECUTE</button>
+        <input id="codeInput" class="code-input" maxlength="8" placeholder="________" />
+
+        <div class="hint">
+          จงถอดรหัสที่ได้จากกระดาษคำใบ้แล้วนำมาตอบ
         </div>
 
-        <div class="footer-info">
-            <p class="hint">คำใบ้: 8 ตัวอักษร</p>
-            <i class="fas fa-shield-halved"></i>
+        <div class="btn-row">
+          <button class="btn btn-start" id="submitBtn">START</button>
+          <button class="btn btn-reset" id="resetBtn">RESET</button>
         </div>
 
-        <div class="sword-effect-container" id="sword-effect-container">
-            <span class="single-sword" id="single-sword" role="presentation">⚔️</span>
-        </div>
-        </div>
-    
-    <audio id="fireworks-audio" src="fireworks.mp3" preload="auto"></audio> 
+        <div class="teamword" id="teamTiles"></div>
 
-    <script src="script.js"></script>
+        <div class="status" id="statusMsg"></div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
 </body>
 </html>
