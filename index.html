@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <title>I.R.A. WEAPON SYSTEM - TEAMWORK Unlock</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <div class="ground-fog"></div>
+
+  <!-- เอฟเฟกต์ดาบ -->
+  <div class="fx-sword" id="fxSword"></div>
+
+  <!-- เสียงตอนปลดล็อก (ให้มีไฟล์ slash.mp3 อยู่โฟลเดอร์เดียวกัน) -->
+  <audio id="sfxSlash" src="assets/slash.mp3" preload="auto"></audio>
+  <!-- เสียงตอนตอบผิด -->
+  <audio id="sfxError" src="assets/error.mp3" preload="auto"></audio>
+
+  <div class="scene">
+    <div class="title">I.R.A. WEAPON CONTROL SYSTEM</div>
+    <div class="subtitle">
+      Input the 8-letter password to unlock the <span>I.R.A. WEAPON</span>
+    </div>
+
+    <div class="arcade-wrapper">
+      <div class="arcade">
+        <div class="arcade-header">
+          LARNGEAR 25th
+        </div>
+
+        <div class="screen" id="screenText">
+          AUTHORIZATION REQUIRED<br>
+          ENTER <span class="highlight">8-LETTER PASSWORD</span><br>
+          TO UNLOCK I.R.A. WEAPON
+        </div>
+
+        <input id="codeInput" class="code-input" maxlength="8" placeholder="________" />
+
+        <div class="hint">
+          จงถอดรหัสที่ได้จากกระดาษคำใบ้แล้วนำมาตอบ
+        </div>
+
+        <div class="btn-row">
+          <button class="btn btn-start" id="submitBtn">START</button>
+          <button class="btn btn-reset" id="resetBtn">RESET</button>
+        </div>
+
+        <div class="teamword" id="teamTiles"></div>
+
+        <div class="status" id="statusMsg"></div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
